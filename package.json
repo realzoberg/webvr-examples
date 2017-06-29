@@ -1,0 +1,31 @@
+{
+  "name": "webvr-examples",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run build && lite-server",
+    "build": "webpack --config ./webpack.config.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/realzoberg/webvr-examples.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/realzoberg/webvr-examples/issues"
+  },
+  "homepage": "https://github.com/realzoberg/webvr-examples#readme",
+  "devDependencies": {
+    "lite-server": "^2.3.0",
+    "webpack": "^3.0.0"
+  },
+  "dependencies": {
+    "aframe": "^0.5.0",
+    "aframe-physics-system": "^1.4.1",
+    "aframe-text-geometry-component": "^0.5.1",
+    "super-hands": "^1.0.0"
+  }
+}
