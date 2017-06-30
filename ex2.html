@@ -1,9 +1,6 @@
 <html>
   <head>
-    <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
-    <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v3.3.0/dist/aframe-extras.min.js"></script>
-    <script src="https://cdn.rawgit.com/donmccurdy/aframe-physics-system/v1.4.1/dist/aframe-physics-system.min.js"></script>
-    <script src="https://unpkg.com/super-hands@1.0.0/dist/super-hands.min.js"></script>
+    <script src="./dist/main.js"></script>
     <script>
       //delayed addition of physics body component to controllers due to AFRAME 0.4.0 changes
       AFRAME.registerComponent('controller-loaded', {
@@ -18,8 +15,8 @@
   <body>
     <a-scene physics>
       <a-assets>
-        <img id="groundTexture" src="https://cdn.aframe.io/a-painter/images/floor.jpg">
-        <img id="skyTexture" src="https://cdn.aframe.io/a-painter/images/sky.jpg">
+        <img id="groundTexture" src="./images/floor.jpg">
+        <img id="skyTexture" src="./images/sky.jpg">
         <a-mixin id="controller"
                  super-hands
                  controller-loaded
@@ -27,6 +24,7 @@
         <a-mixin id="controller-loaded" static-body="shape: sphere; sphereRadius: 0.02;"></a-mixin>
         <a-mixin id="box" geometry="primitive: box; depth: 0.5; height: 0.5; width: 0.5"
                  dynamic-body hoverable grabbable stretchable drag-droppable></a-mixin>
+        <a-asset-item id="dawningFont" src="https://cdn.glitch.com/c719c986-c0c5-48b8-967c-3cd8b8aa17f3%2FdawningOfANewDayRegular.typeface.json?1490305922844"></a-asset-item>
       </a-assets>
 
       <a-entity vive-controls="hand: left" mixin="controller" controller-loaded></a-entity>
@@ -41,6 +39,15 @@
       <a-entity class="box" mixin="box" letter="D" position="-0.5 0.5 -1.5" material="color: #1F75FE"></a-entity>
       <a-entity class="box" mixin="box" letter="E" position="-1 0.5 -0.5" material="color: #ffcc00"></a-entity>
       <a-entity class="box" mixin="box" letter="X" position="1 0.5 -1.5" material="color: #ff2b2b"></a-entity>
+      <a-entity position="-3 1 -6" rotation="5 0 0">
+        <a-entity
+                rotation="0 0 5"
+                position="-20 1 0.2"
+                text-geometry="value: Frontend Party; font: #dawningFont; bevelEnabled: true; bevelSize: 0.05; bevelThickness: 0.05; curveSegments: 12; size: 5; height: 0;"
+                material="color: #ff2b2b; metalness:1;"
+        ></a-entity>
+      </a-entity>
+
     </a-scene>
 
     <script type="text/javascript">
@@ -52,7 +59,7 @@
       document.querySelectorAll('.box').forEach(function(boxEl) {
           var letter = boxEl.getAttribute('letter');
 
-          boxEl.addEventListener('body-loaded', function () {
+          boxEl.addEventListener('loaded', function () {
             boxEl.innerHTML = letterTemplate.replace(/#letter#/g, letter);
           })
       });
