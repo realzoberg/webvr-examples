@@ -23,9 +23,9 @@
     "webpack": "^3.0.0"
   },
   "dependencies": {
-    "aframe": "^0.5.0",
-    "aframe-physics-system": "^1.4.1",
+    "aframe": "0.5.0",
+    "aframe-physics-system": "1.4.1",
     "aframe-text-geometry-component": "^0.5.1",
-    "super-hands": "^1.0.0"
+    "super-hands": "1.0.0"
   }
 }
